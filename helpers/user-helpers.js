@@ -26,7 +26,7 @@ module.exports={
                         resolve(response)
                     }else{
                         console.log("log failed");
-                        response({status:false})
+                        resolve({status:false})
                     }
                 })
             }else{
