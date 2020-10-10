@@ -1,6 +1,6 @@
 <div class="login">
     <div class="col-md-6 m-auto">
-        <div class="container mt-5 pl-5">
+        <div class="container mt-5 pl-5 ">
             <h2 class="text-center">Login</h2>
             <form action="/login" method="POST">
             {{#if loginErr}}
@@ -14,7 +14,7 @@
                     <label for="">Password</label>
                     <input type="password" class="form-control" name="Password" placeholder="Password">
                 </div>
-                <a href="/signup">Create new Account ?</a>
+                <a class="login-create" href="/signup">Create new Account ?</a>
                 <button type="submit" class="btn btn-primary float-right">Login</button>
             </form>
         </div>

@@ -1,7 +1,12 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,90,&display=swap');
+* {
     margin: 0;
     padding: 0;
-    background-color: #d534db;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color:#20b6c6;
 }
 
 .add-prod {
@@ -55,7 +60,7 @@ body {
     height:auto;
 }
 .view-Prod {
-    background-color:#c890ff;
+    background-color:#ff7cc6;
     height: 100vh;
 }
 .view-Prod h2{
@@ -74,7 +79,7 @@ body {
 }
 .cart{
     background-color:#c890ff;
-    height: 100%;
+    height: 100vh;
     padding-bottom: 55px;
 }
 .cart .container{
@@ -88,9 +93,58 @@ body {
     padding-top: 20px;
 }
 .card-body{
-    background-color: #fa6cff;
+    background-color: #f1cdb3;;
 }
 .card{
     border: 1px solid black;
     border-radius: 5px;
+}
+.admin-header{
+    background-color: #65686d;
+}
+.user-header{
+    background-color: #65686d;
+}
+.nav-link {
+    color: cornsilk;
+}
+.nav-link:hover {
+    color: cornsilk;
+}
+.navbar-brand{
+    color: #fff;
+}
+.navbar-brand:hover{
+    color: #ffef00;
+}
+.user-btn{
+    color: #c890ff;;
+}
+.login-create  {
+    color: #fff;
+}
+.login-create:hover {
+    color: blue;
+    text-decoration: none;
+}
+.signup-create  {
+    color: #fff;
+}
+.signup-create:hover {
+    color: blue;
+    text-decoration: none;
+}
+.nav-link.disabled{
+    color: #fff;
+}
+.view-Users {
+    background-color:#ff7cc6;
+    height: 100vh;
+}
+.view-Users h2{
+    text-align: center;
+    padding: 13px;
+}
+.view-Users .table{
+    margin-top: 10px;
 }
