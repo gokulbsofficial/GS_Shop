@@ -38,7 +38,7 @@ router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
     req.session.loggedIn=true
     req.session.user=response
-    res.redirect('/login')
+    res.redirect('/')
   })
 })
 router.post('/login',(req,res)=>{
@@ -65,6 +65,15 @@ router.get('/add-to-cart/:id',(req,res)=>{
   userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
     res.json({status:true})
   })
+})
+router.post('/change-product-quantity',(req,res,next)=>{
+  userHelpers.changeProductQuantity(req.body).then((response)=>{ 
+    res.json(response)
+  })
+})
+router.get('/place-order',verifyLogin, async(req,res)=>{
+  let total = await userHelpers.getTotalAmount(req.session.user._id)
+  res.render('user/place-order',{total,user:req.session.user})
 })
 
 module.exports = router;

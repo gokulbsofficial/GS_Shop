@@ -1,0 +1,60 @@
+<section>
+    <div class="container mt-5">
+        <form action="" id="checkout-form">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h2>Enter Delivery Details</h2><br>
+                    <div>
+                        <label for="">Address</label>
+
+                        <input class="form-control" type="text" name="address" id="address" placeholder="Address">
+                        <label for="Pincode">Pincode</label>
+
+                        <input class="form-control" type="text" name="pincode" id="pincode" placeholder="Pincode">
+                        <label for="">Mobile</label>
+
+                        <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Mobile">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container mt-5 ml-5 checkout">
+                        <h5>Total: Rs.{{total}}</h5>
+                        <hr>
+                        <div class="payment">
+                            <p>Payment Method</p>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment-method" value="COD" checked>COD
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="payment-method" value="ONLINE">Online payment
+                            </label>
+                            <button class="btn btn-primary float-left" type="submit">Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<style>
+    input[type=radio] {
+        width: 20px;
+        height: 20px;
+    }
+
+    label.radio-inline {
+        display: flex;
+        align-items: center;
+    }
+    .checkout{
+        border: 1px solid;
+        border-radius: 3px;
+        padding: 30px;
+    }
+    .payment {
+        padding-bottom: 16px;
+    }
+
+
+</style>

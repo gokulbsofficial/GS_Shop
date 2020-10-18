@@ -79,7 +79,7 @@ body {
 }
 .cart{
     background-color:#c890ff;
-    height: 100vh;
+    height: 100%;
     padding-bottom: 55px;
 }
 .cart .container{
@@ -147,4 +147,12 @@ body {
 }
 .view-Users .table{
     margin-top: 10px;
+}
+.cart-item-count{
+    padding: 4px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+.cart-item-count:hover{
+    background-color:#fff;
 }
