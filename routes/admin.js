@@ -9,10 +9,8 @@ var productHelper=require('../helpers/product-helpers')
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   productHelpers.getAllProducts().then((products)=>{
-    console.log(products);
     res.render('admin/view-products', { admin: true,products})
   })
-
 });
 router.get('/add-product',(req,res)=>{
   res.render('admin/add-product',{ admin: true})
@@ -23,7 +21,7 @@ router.post('/add-product',(req,res)=>{
     let image=req.files.Image
     image.mv('./public/product-images/'+id+'.jpeg',(err)=>{
       if(!err){
-        res.render("admin/add-product")
+        res.render("admin/add-product",{admin: true})
       }else{
         console.log(err)
       }

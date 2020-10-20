@@ -49,7 +49,7 @@ module.exports={
                 $set:{
                     Name:proDetails.Name,
                     Description:proDetails.Description,
-                    Price:proDetails.Price,
+                    Price:parseInt(proDetails.Price),
                     Category:proDetails.Category
                 }
             }).then((response)=>{
