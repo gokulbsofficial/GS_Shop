@@ -232,7 +232,7 @@ module.exports={
         return new Promise(async(resolve,reject)=>{
             let orderItems=await db.get().collection(collection.ORDER_COLLECTION).aggregate([
                 {
-                    $match:{user:objectId(orderId)}
+                    $match:{_id:objectId(orderId)}
                 },
                 {
                     $unwind:'$products'
@@ -263,7 +263,7 @@ module.exports={
     generateRazorpay:(orderId,total)=>{
         return new Promise((resolve,reject)=>{
             var options = {
-                amount: total,  // amount in the smallest currency unit
+                amount: total*100,  // amount in the smallest currency unit
                 currency: "INR",
                 receipt: ""+orderId
               };
@@ -275,6 +275,32 @@ module.exports={
                 resolve(order)
             }
               });
+        })
+    },
+    verifyPayment:(details)=>{
+        console.log(details['payment[razorpay_order_id]']);
+        return new Promise((resolve,reject)=>{
+            const crypto = require('crypto');
+            let hash = crypto.createHmac('sha256','nbp9eK9CkHV7iCujy1oOQOgM');
+            hash.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
+            hash.digest('hex');
+            if(hash==details['payment[razorpay_signature']){
+                resolve()
+            }else{
+                reject()
+            }
+        })
+    },
+    changePaymentStatus:(orderId)=>{
+        return new Promise((resolve,reject)=>{
+        db.get().collection(collection.ORDER_COLLECTION)
+        .updateOne({_id:ObjectID(orderId)},
+        {
+            $set:{
+                status:'placed'
+            }
+        }
+        ).then(()=>resolve())
         })
     }
     

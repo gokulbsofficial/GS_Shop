@@ -59,7 +59,10 @@ router.get('/logout',(req,res)=>{
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
   let products=await userHelpers.getCartProducts(req.session.user._id)
-  let totalValue =await userHelpers .getTotalAmount(req.session.user._id)
+  let totalValue=0
+  if(products.length>0){
+  totalValue =await userHelpers .getTotalAmount(req.session.user._id)
+  }
   res.render('user/cart',{products,user:req.session.user,totalValue})
 })
 router.get('/add-to-cart/:id',(req,res)=>{
@@ -70,6 +73,11 @@ router.get('/add-to-cart/:id',(req,res)=>{
 router.post('/change-product-quantity',(req,res,next)=>{
   userHelpers.changeProductQuantity(req.body).then(async(response)=>{ 
     response.total = await userHelpers.getTotalAmount(req.body.user) 
+    res.json(response)
+  })
+})
+router.post('/remove-cart',(req,res)=>{
+  productHelpers.removeCart(req.body).then((response)=>{
     res.json(response)
   })
 })
@@ -98,11 +106,20 @@ router.get('/orders',async(req,res)=>{
   let orders = await userHelpers.getUserOrders(req.session.user._id)
   res.render('user/orders',{user:req.session.user,orders})
 })
-router.get('/view-order-product',async(req,res)=>{
+router.get('/view-order-products/:id',async(req,res)=>{
   let products = await userHelpers.getOrderProducts(req.params.id)
-  res.render('user/view-order-product',{user:req.session.user,products})
+  res.render('user/view-order-products',{user:req.session.user,products})
 })
 router.post('/verify-payment',(req,res)=>{
   console.log(req.body)
+  userHelpers.verifyPayment(res.body).then(()=>{
+   userHelpers.changePaymentStatus(req.body['order[receipt]']) .then(()=>{
+     console.log("Payment-Successfull");
+    res.json({status:true})
+   })
+  }).catch((err)=>{
+    console.log(err);
+    res.json({status:false,errMsg:''})
+  })
 })
 module.exports = router;

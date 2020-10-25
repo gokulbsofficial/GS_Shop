@@ -15,17 +15,17 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each oders}}
+                {{#each orders}}
                 <tr>
                     <td>{{this.date}}</td>
-                    <td>{{this.deleveryDetailes.address}}</td>
-                    <td>{{this.deleveryDetailes.pincode}}</td>
-                    <td>{{this.deleveryDetailes.mobile}}</td>
+                    <td>{{this.deliveryDetails.address}}</td>
+                    <td>{{this.deliveryDetails.pincode}}</td>
+                    <td>{{this.deliveryDetails.mobile}}</td>
                     <td>{{this.totalAmount}}</td>
-                    <td>{{this.PaymentMethod}}</td>
+                    <td>{{this.paymentMethod}}</td>
                     <td>{{this.status}}</td>
                     <td>
-                        <a href="/view-order-products/{{this.id}}" class="btn btn-primary">View Products</a>
+                        <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
                     </td>
  
                 </tr>

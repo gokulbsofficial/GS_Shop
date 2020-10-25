@@ -23,7 +23,7 @@
                         <button class="cart-item-count ml-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger">Remove</a>
+                        <button class="remove-cart btn btn-danger" onclick="removeCart('{{this._id}}','{{this.product._id}}','{{../user._id}}','{{this.product.Name}}')">Remove</button>
                     </td>
                 </tr>
                 {{/each}}
@@ -31,7 +31,7 @@
         </table>
         <hr style="background-color: #fff;">
         <div class="float-right pr-5">
-        <h3 class="float-left mr-5">Total: Rs.<span id="total">{{totalValue}}</span></h3><br>
+        <h3 class="float-left mr-5">Total: Rs.<span id="total">{{totalValue}}</span>.00</h3><br>
         <a href="/place-order" class="btn btn-success mt-3" style="width: 100%;"><b>Place Order</b></a>
         </div>
     </div>
@@ -61,5 +61,23 @@
                 }
             }
         })
+    }
+    function removeCart(cartId,proId,userId,name){
+      let Name = name;
+      let check = confirm("Are you sure to remove "+name+" from cart ?")
+      if(check==true){
+        $.ajax({
+            url:'/remove-cart',
+            data:{
+                user:userId,
+                cart:cartId,
+                product:proId,
+            },
+            method:'post',
+            success:(response)=>{
+                location.reload()
+            }
+        })
+      }
     }
 </script>

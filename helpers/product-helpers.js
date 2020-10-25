@@ -6,9 +6,7 @@ var objectId=require('mongodb').ObjectID
 module.exports={
 
     addProduct:(product,callback)=>{
-        
-        db.get().collection('product').insertOne(product).then((data)=>{
-            
+        db.get().collection('product').insertOne(product).then((data)=>{           
             callback(data.ops[0]._id)
         })
 
@@ -54,6 +52,21 @@ module.exports={
                 }
             }).then((response)=>{
                 resolve()
+            })
+        })
+    },
+    removeCart:(details)=>{
+        console.log(details.user);
+        console.log(details.cart);
+        console.log(details.product);
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CART_COLLECTION)
+            .updateOne({_id:objectId(details.cart)},
+            {
+                $pull:{products:{item:objectId(details.product)}}
+            }
+            ).then((response)=>{
+                resolve({response})
             })
         })
     }
