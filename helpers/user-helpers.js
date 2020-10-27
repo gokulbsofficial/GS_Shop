@@ -221,6 +221,18 @@ module.exports={
             resolve(cart.products)
         })
     },
+    removeCart:(details)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.CART_COLLECTION)
+            .updateOne({_id:objectId(details.cart)},
+            {
+                $pull:{products:{item:objectId(details.product)}}
+            }
+            ).then((response)=>{
+                resolve({response})
+            })
+        })
+    },
     getUserOrders:(userId)=>{
         return new Promise(async(resolve,reject)=>{
             let orders=await db.get().collection(collection.ORDER_COLLECTION)
@@ -278,7 +290,6 @@ module.exports={
         })
     },
     verifyPayment:(details)=>{
-        console.log(details['payment[razorpay_order_id]']);
         return new Promise((resolve,reject)=>{
             const crypto = require('crypto');
             let hash = crypto.createHmac('sha256','nbp9eK9CkHV7iCujy1oOQOgM');

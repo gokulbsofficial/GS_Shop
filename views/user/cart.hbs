@@ -8,7 +8,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Price</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col"></th>
+                    <th scope="col">Option</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,7 +63,6 @@
         })
     }
     function removeCart(cartId,proId,userId,name){
-      let Name = name;
       let check = confirm("Are you sure to remove "+name+" from cart ?")
       if(check==true){
         $.ajax({

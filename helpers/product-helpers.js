@@ -55,19 +55,4 @@ module.exports={
             })
         })
     },
-    removeCart:(details)=>{
-        console.log(details.user);
-        console.log(details.cart);
-        console.log(details.product);
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.CART_COLLECTION)
-            .updateOne({_id:objectId(details.cart)},
-            {
-                $pull:{products:{item:objectId(details.product)}}
-            }
-            ).then((response)=>{
-                resolve({response})
-            })
-        })
-    }
 }

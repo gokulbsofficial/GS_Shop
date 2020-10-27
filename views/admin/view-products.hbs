@@ -3,17 +3,17 @@
         <div class="row">
             <a href="/admin/add-product" class="btn btn-success">Add Product</a>
         </div>
-        <h2>All Products</h2>
-        <table class="table" id="table1">
+        {{!-- <h2>All Products</h2> --}}
+        <table class="table" id="productsTable">
             <thead>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Description</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Price</th>
                     <th>Image</th>
-                    <th scope="col"></th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,3 +37,9 @@
         </table>
     </div>
 </section>
+
+<script>$(document).ready(function () {
+    $.noConflict();
+        var table = $('#productsTable').DataTable();
+    });
+</script>
