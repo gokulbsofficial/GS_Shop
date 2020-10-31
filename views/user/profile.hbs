@@ -1,0 +1,33 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="margin-left: 23%;">
+                <h2 class="text-center">Profile</h2>
+                <form action="/admin/add-product" method="POST">
+                    <label for="">Name:</label>
+                    <input type="text" name="Name" value="Gokul" class="form-control">
+
+                    <label for="">Age:</label>
+                    <input type="number" name="Age" value="" class="form-control">
+
+                    <label for="">Gender:</label> <br>
+                    <input type="radio" name="Gender" value="Male">
+                    <label for="">Male</label>
+                    <input type="radio" name="Gender" value="Female">
+                    <label for="">Female</label>
+                    <br>
+                    <label for="">Email Id:</label>
+                    <input type="text" name="Email" class="form-control">
+
+                    <label for="">Mobile Number:</label>
+                    <input type="text" name="Mobile" class="form-control" style="margin-bottom: 10px;">
+
+                    <a href="/change-passwd" style="color: #fff; text-decoration: none;" class="change-passwd">Change
+                        Password</a> <br>
+
+                    <button type="submit" class="btn btn-success mt-4 ">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,6 +3,9 @@
         <div class="container mt-5 pl-5">
             <h2 class="text-center">Create new account</h2>
         </div>
+        {{#if signupErr}}
+        <p class="error">{{signupErr}}</p>
+        {{/if}}
         <form action="/signup" method="POST">
             <div class="form-group">
                 <label for="">Name</label>

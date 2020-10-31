@@ -17,7 +17,7 @@
                     <td>{{this.Name}}</td>
                     <td>{{this.Email}}</td>
                     <td>
-                        <button href="" class="btn btn-danger">Block</button>
+                        <a href="/admin/remove-user/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you want to remove {{this.Name}} ?')" >Remove</a>
                     </td>
                 </tr>
                 {{/each}}

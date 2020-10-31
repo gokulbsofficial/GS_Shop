@@ -12,7 +12,8 @@
                     <a class="nav-link" href="/">Products<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart">Cart <span class="badge badge-success" id="cart-count">{{cartCount}}</span></a>
+                    <a class="nav-link" href="/cart">Cart <span class="badge badge-success"
+                            id="cart-count">{{cartCount}}</span></a>
                 </li>
                 {{#if user}}
                 <li class="nav-item">
@@ -30,7 +31,10 @@
                     {{/if}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
+                    {{#if user}}
+                    <a class="dropdown-item" href="/profile">Profile</a>
+                    {{/if}}
+                    
                     {{#if user}}
                     <a class="dropdown-item" href="/logout">Logout</a>
                     {{else}}

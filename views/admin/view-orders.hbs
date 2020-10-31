@@ -1,0 +1,43 @@
+<section class="view-Prod">
+    <div class="container">
+        <h2 class="mt-4">Orders</h2>
+        <div class="row mt-1">
+        <table class="table mt-2" id="table1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Address</th>
+                    <th>Pincode</th>
+                    <th>Mobile</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Payment</th>
+                    <th>Status</th>
+                    <th scope="col"> Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orders}}
+                <tr>
+                    <td>{{this.date}}</td>
+                    <td>{{this.deliveryDetails.address}}</td>
+                    <td>{{this.deliveryDetails.pincode}}</td>
+                    <td>{{this.deliveryDetails.mobile}}</td>
+                    <td>{{this.totalAmount}}</td>
+                    <td>{{this.paymentMethod}}</td>
+                    <td>{{this.status}}</td>
+                    <td>  
+                        {{!-- if(this.status===Shipped) --}}
+                        <a href="/admin/packed-status/{{this._id}}" class="btn btn-light" onclick="return confirm('Are you sure packed for {{this.Name}} ?')" >Packed</a> <br>
+                        <a href="/admin/shipped-status/{{this._id}}" class="btn btn-primary mt-2" onclick="return confirm('Are you sure to ship for {{this.Name}} ?')" >Shipped</a> <br>
+                        <a href="/admin/delivered-status/{{this._id}}" class="btn btn-success mt-2" onclick="return confirm('Are you sure to deliver for {{this.Name}} ?')" >Delivered</a>
+                        <a href="/admin/cancelled-status/{{this._id}}" class="btn btn-danger mt-2" onclick="return confirm('Are you sure to cancell order for {{this.Name}} ?')" >Cancelled</a>
+                    </td>
+ 
+                </tr>
+                {{/each}}
+            
+            </tbody>
+        </table>
+        </div>
+    </div>
+</section>

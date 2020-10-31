@@ -16,12 +16,18 @@ var instance = new Razorpay({
 
 module.exports={
     doSignup:(userData)=>{
+        // let user = false;
         return new Promise(async(resolve,reject)=>{
-            userData.Password=await bcrypt.hash(userData.Password,10)
+            let user=await db.get().collection(collection.USER_COLLECTION).findOne({Email:userData.Email})
+            if(user){
+                console.log("Already have a account");
+                resolve({status:false})
+            }else{
+            userData.Password=bcrypt.hash(userData.Password,10)
             db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((data)=>{
                 resolve(data.ops[0])
             })
-        })
+        }})
     },
     doLogin:(userData)=>{
         return new Promise(async(resolve,reject)=>{
@@ -193,11 +199,12 @@ module.exports={
             resolve(total[0].total)
         })   
     },
-    placeOrder:(order,products,total)=>{
+    placeOrder:(order,products,total,user)=>{
         return new Promise((resolve,reject)=>{
             let status = order['payment-method'] ==='COD'?'placed':'pending'
             let orderObj = {
                 deliveryDetails:{
+                    name:user,
                     mobile:order.mobile,
                     address:order.address,
                     pincode:order.pincode,
@@ -295,7 +302,7 @@ module.exports={
             let hash = crypto.createHmac('sha256','nbp9eK9CkHV7iCujy1oOQOgM');
             hash.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
             hash.digest('hex');
-            if(hash==details['payment[razorpay_signature']){
+            if(hash==details['payment[razorpay_signature]']){
                 resolve()
             }else{
                 reject()
@@ -305,7 +312,7 @@ module.exports={
     changePaymentStatus:(orderId)=>{
         return new Promise((resolve,reject)=>{
         db.get().collection(collection.ORDER_COLLECTION)
-        .updateOne({_id:ObjectID(orderId)},
+        .updateOne({_id:objectId(orderId)},
         {
             $set:{
                 status:'placed'

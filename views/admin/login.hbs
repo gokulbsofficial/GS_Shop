@@ -1,10 +1,10 @@
 <div class="login">
     <div class="col-md-6 m-auto">
         <div class="container mt-5 pl-5 ">
-            <h2 class="text-center">Login</h2>
-            <form action="/login" method="POST">
-            {{#if loginErr}}
-                <p class="error">{{loginErr}}</p>
+            <h2 class="text-center">Admin Login</h2>
+            <form action="/admin/login" method="POST">
+            {{#if adminLoginErr}}
+                <p class="error">{{adminLoginErr}}</p>
             {{/if}}
                 <div class="form-group">
                     <label for="">Email Address</label>
@@ -14,7 +14,6 @@
                     <label for="">Password</label>
                     <input type="password" class="form-control" name="Password" placeholder="Password">
                 </div>
-                <a class="login-create" href="/signup">Create new Account ?</a>
                 <button type="submit" class="btn btn-primary float-right">Login</button>
             </form>
         </div>

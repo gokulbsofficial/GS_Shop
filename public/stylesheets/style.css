@@ -8,6 +8,7 @@
 body {
     background-color:#20b6c6;
 }
+/* add product page */
 
 .add-prod {
     background-image:linear-gradient(to right, #5962e6 , #d146dd);
@@ -32,6 +33,13 @@ body {
     font-weight: 500;
     font-family: 'bold;
 }
+.add-prod a {
+    color: #fff;
+    background-color: #fff;
+    text-decoration: none;
+}
+/* edit product page */
+
 .edit-prod {
     background-image:linear-gradient(to right, #5962e6 , #d146dd);
     width: 100%;
@@ -53,14 +61,41 @@ body {
     border-color: #90b1ff;
     color: #fff;
     font-weight: 500;
-    font-family: 'bold;
+    font-family: bold;
 }
 .edit-prod img {
     width: 100px;
     height:auto;
 }
+/* profile page */
+.profile-section {
+    background-image:linear-gradient(to right, #5962e6 , #d146dd);
+    width: 100%;
+    padding-top: 30px;
+    height: 584px;
+}
+.profile-section h2 {
+    color: #000;
+    font-weight: bold;
+    font-family: initial;
+}
+.profile-section label {
+    color: #000;
+    font-family: initial;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.profile-section input {
+    background: #fff;
+    border-color: #90b1ff;
+    color: #000;
+    font-weight: 500;
+    font-family: bold;
+
+}
+/* view product page */
+
 .view-Prod {
-    background-color:#ff7cc6;
     height: 100vh;
 }
 .view-Prod h2{
@@ -77,8 +112,16 @@ body {
 .view-Prod .table{
     margin-top: 10px;
 }
+
+/* table page */
+
+.table.dataTable tbody tr {
+    background-color: #20b6c6;
+}
+
+/* cart page */
+
 .cart{
-    background-color:#c890ff;
     height: 100%;
     padding-bottom: 55px;
 }
@@ -89,9 +132,39 @@ body {
     text-align: center;
     padding-bottom: 17px;
 }
+.cart-item-count{
+    padding: 4px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+}
+.cart-item-count:hover{
+    background-color:#fff;
+}
+
+/* login page */
+
 .login{
     padding-top: 20px;
 }
+.login-create  {
+    color: #fff;
+}
+.login-create:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+/* signup page */
+
+.signup-create  {
+    color: #fff;
+}
+.signup-create:hover {
+    color: blue;
+    text-decoration: none;
+}
+/* card page */
+
 .card-body{
     background-color: #f1cdb3;;
 }
@@ -99,6 +172,9 @@ body {
     border: 1px solid black;
     border-radius: 5px;
 }
+
+/* header page */
+
 .admin-header{
     background-color: #65686d;
 }
@@ -120,25 +196,12 @@ body {
 .user-btn{
     color: #c890ff;;
 }
-.login-create  {
-    color: #fff;
-}
-.login-create:hover {
-    color: blue;
-    text-decoration: none;
-}
-.signup-create  {
-    color: #fff;
-}
-.signup-create:hover {
-    color: blue;
-    text-decoration: none;
-}
 .nav-link.disabled{
     color: #fff;
 }
+/* view user page */
+
 .view-Users {
-    background-color:#ff7cc6;
     height: 100vh;
 }
 .view-Users h2{
@@ -147,20 +210,4 @@ body {
 }
 .view-Users .table{
     margin-top: 10px;
-}
-.cart-item-count{
-    padding: 4px;
-    padding-bottom: 1px;
-    padding-top: 1px;
-}
-.cart-item-count:hover{
-    background-color:#fff;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type=number] {
-    -moz-appearance: textfield;
 }
