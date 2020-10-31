@@ -46,7 +46,7 @@ router.get('/view-product',verifyLogin,function (req, res, next) {
 router.get('/add-product',verifyLogin,(req,res)=>{
   res.render('admin/add-product',{ admin: true})
 })
-router.post('/add-product',(req,res)=>{
+router.post('/add-product',verifyLogin,(req,res)=>{
   req.body.Price = parseInt(req.body.Price)
   adminHelpers.addProduct(req.body,(id)=>{
     let image=req.files.Image

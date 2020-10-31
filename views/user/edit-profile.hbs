@@ -1,0 +1,32 @@
+<section class="profile-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="margin-left: 23%;">
+                <h2 class="text-center">Profile</h2>
+                <form action="/edit-profile/{{userDetails._id}}" method="POST">
+                    <label for="">Name:</label>
+                    <input type="text" name="Name" value="{{userDetails.Name}}" class="form-control">
+
+                    <label for="">Age:</label>
+                    <input type="text" name="Age" value="{{userDetails.Age}}" class="form-control">
+
+                    <label for="">Gender:</label> <br>
+                    <input type="radio" name="Gender" value="Male">
+                    <label for="">Male</label>
+                    <input type="radio" name="Gender" value="Female">
+                    <label for="">Female</label>
+                    <br>
+                    <label for="">Email Id:</label>
+                    <input type="text" name="Email" value="{{userDetails.Email}}" class="form-control">
+
+                    <label for="">Mobile Number:</label>
+                    <input type="text" name="Mobile" value="{{userDetails.Mobile}}" class="form-control" style="margin-bottom: 10px;">
+                    <a href="/change-passwd" style="color: #fff; text-decoration: none;" class="change-passwd">Change
+                        Password</a> <br>
+
+                    <button type="submit" class="btn btn-success mt-4 ">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

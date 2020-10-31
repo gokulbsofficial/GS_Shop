@@ -69,8 +69,18 @@ router.get('/logout',(req,res)=>{
   req.session.userLoggedIn=false
   res.redirect('/')
 })
-router.get('/profile',(req,res)=>{
-  res.render('user/profile')
+router.get('/profile',verifyLogin,(req,res)=>{
+  res.render('user/profile',{user:req.session.user})
+})
+router.get('/edit-profile',verifyLogin,async(req,res)=>{
+  let userDetails=await userHelpers.getUserDetails(req.session.user._id)
+  res.render('user/edit-profile',{userDetails,user:req.session.user})
+})
+router.post('/edit-profile/:id',(req,res)=>{
+  console.log(req.params.id,req.body);
+  userHelpers.editProfile(req.params.id,req.body).then((response)=>{
+    res.redirect('/')
+  })
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
   let products=await userHelpers.getCartProducts(req.session.user._id)
@@ -80,18 +90,18 @@ router.get('/cart',verifyLogin,async(req,res)=>{
   }
   res.render('user/cart',{products,user:req.session.user,totalValue})
 })
-router.get('/add-to-cart/:id',(req,res)=>{
+router.get('/add-to-cart/:id',verifyLogin,(req,res)=>{
     userHelpers.addToCart(req.params.id,req.session.user._id).then(()=>{
     res.json({status:true})
   })
 })
-router.post('/change-product-quantity',(req,res,next)=>{
+router.post('/change-product-quantity',verifyLogin,(req,res,next)=>{
   userHelpers.changeProductQuantity(req.body).then(async(response)=>{ 
     response.total = await userHelpers.getTotalAmount(req.body.user) 
     res.json(response)
   })
 })
-router.post('/remove-cart',(req,res)=>{
+router.post('/remove-cart',verifyLogin,(req,res)=>{
   userHelpers.removeCart(req.body).then((response)=>{
     res.json(response)
   })
@@ -100,7 +110,7 @@ router.get('/place-order',verifyLogin, async(req,res)=>{
   let total = await userHelpers.getTotalAmount(req.session.user._id)
   res.render('user/place-order',{total,user:req.session.user})
 })
-router.post('/place-order',async(req,res)=>{
+router.post('/place-order',verifyLogin,async(req,res)=>{
   let products = await userHelpers.getCartProductList(req.body.userId)
   let totalPrice = await userHelpers.getTotalAmount(req.body.userId)
   userHelpers.placeOrder(req.body,products,totalPrice,req.session.user.Name).then((orderId)=>{
@@ -121,11 +131,11 @@ router.get('/orders',verifyLogin,async(req,res)=>{
   let orders = await userHelpers.getUserOrders(req.session.user._id)
   res.render('user/orders',{user:req.session.user,orders})
 })
-router.get('/view-order-products/:id',async(req,res)=>{
+router.get('/view-order-products/:id',verifyLogin,async(req,res)=>{
   let products = await userHelpers.getOrderProducts(req.params.id)
   res.render('user/view-order-products',{user:req.session.user,products})
 })
-router.post('/verify-payment',(req,res)=>{
+router.post('/verify-payment',verifyLogin,(req,res)=>{
   userHelpers.verifyPayment(req.body).then(()=>{
    userHelpers.changePaymentStatus(req.body['order[receipt]']) .then(()=>{
      console.log("Payment-Successfull");

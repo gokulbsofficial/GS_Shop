@@ -16,14 +16,14 @@ var instance = new Razorpay({
 
 module.exports={
     doSignup:(userData)=>{
-        // let user = false;
         return new Promise(async(resolve,reject)=>{
             let user=await db.get().collection(collection.USER_COLLECTION).findOne({Email:userData.Email})
             if(user){
                 console.log("Already have a account");
                 resolve({status:false})
             }else{
-            userData.Password=bcrypt.hash(userData.Password,10)
+            userData.Password= await bcrypt.hash(userData.Password,10)
+            console.log(userData);
             db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((data)=>{
                 resolve(data.ops[0])
             })
@@ -50,6 +50,29 @@ module.exports={
                 console.log("login failed");
                 resolve({status:false})
             }
+        })
+    },
+    getUserDetails:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)}).then((userDetails)=>{
+                resolve(userDetails)
+            })
+        })
+    },
+    editProfile:(userId,usrDetails)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTION)
+            .updateOne({_id:objectId(userId)},{
+                $set:{
+                    Name:usrDetails.Name,
+                    Age:parseInt(usrDetails.Age),
+                    Gender:usrDetails.Gender,
+                    Email:usrDetails.Email,
+                    Mobile:parseInt(usrDetails.Mobile)
+                }
+            }).then((response)=>{
+                resolve()
+            })
         })
     },
     addToCart:(proId,userId)=>{
