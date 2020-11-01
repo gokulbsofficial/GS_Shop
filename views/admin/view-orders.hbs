@@ -27,10 +27,10 @@
                     <td>{{this.paymentMethod}}</td>
                     <td>{{this.status}}</td>
                     <td>    
-                        {{#ifEquals this.status "pending"}}
+                        {{#ifEquals this.status "Pending"}}
                         <a href="/admin/cancelled-status/{{this._id}}" class="btn btn-danger mt-2" onclick="return confirm('Are you sure to cancell order for {{this.Name}} ?')" >Cancelled</a>
                         {{/ifEquals}} 
-                        {{#ifEquals this.status "placed"}}
+                        {{#ifEquals this.status "Placed"}}
                         <a href="/admin/packed-status/{{this._id}}" class="btn btn-light" onclick="return confirm('Are you sure packed for {{this.Name}} ?')" >Packed</a> <br> 
                         {{/ifEquals}}
                         {{#ifEquals this.status "Packed"}}

@@ -219,12 +219,13 @@ module.exports={
                     }
                 }
             ]).toArray()
+            console.log(total[0].total);
             resolve(total[0].total)
         })   
     },
     placeOrder:(order,products,total,user)=>{
-        return new Promise((resolve,reject)=>{
-            let status = order['payment-method'] ==='COD'?'placed':'pending'
+        return new Promise(async(resolve,reject)=>{
+            let status = order['payment-method'] ==='COD'?'Placed':'Pending'
             let orderObj = {
                 deliveryDetails:{
                     name:user,
@@ -239,8 +240,8 @@ module.exports={
                 status:status,
                 date:new Date()
             }
-            db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response)=>{
-                db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)})
+            db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then(async(response)=>{
+            await db.get().collection(collection.CART_COLLECTION).removeOne({user:objectId(order.userId)})
                 resolve(response.ops[0]._id)
             })
         })
@@ -313,7 +314,6 @@ module.exports={
                   if(err){
                       console.log(err);
                   }else{
-                console.log("New Order : ",order);
                 resolve(order)
             }
               });
@@ -323,8 +323,8 @@ module.exports={
         return new Promise((resolve,reject)=>{
             const crypto = require('crypto');
             let hash = crypto.createHmac('sha256','nbp9eK9CkHV7iCujy1oOQOgM');
-            hash.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
-            hash.digest('hex');
+            hash.update(details['payment[razorpay_order_id]']+'|'+ details['payment[razorpay_payment_id]']);
+            hash=hash.digest('hex');
             if(hash==details['payment[razorpay_signature]']){
                 resolve()
             }else{
@@ -338,10 +338,22 @@ module.exports={
         .updateOne({_id:objectId(orderId)},
         {
             $set:{
-                status:'placed'
+                status:'Placed'
             }
         }
         ).then(()=>resolve())
+        })
+    },
+    changeCancelledStatus:(orderId)=>{
+        return new Promise((resolve,reject)=>{
+        db.get().collection(collection.ORDER_COLLECTION)
+        .updateOne({_id:objectId(orderId)},
+        {
+            $set:{
+                status:'Cancelled'
+            }
+        }
+        ).then((response)=>resolve(response))
         })
     }
     

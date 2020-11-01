@@ -11,7 +11,7 @@
                     <th scope="col">Amount</th>
                     <th scope="col">Payment</th>
                     <th>Status</th>
-                    <th scope="col"></th>
+                    <th scope="col-12">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +25,9 @@
                     <td>{{this.paymentMethod}}</td>
                     <td>{{this.status}}</td>
                     <td>
+                        {{#ifEquals this.status "pending"}}
+                        <a href="/payment-continue/{{this._id}}" class="btn btn-success" style="margin-right: 5px;margin-bottom: 10px;">Continue</a><a href="/cancelled-status/{{this._id}}" class="btn btn-danger" style="margin-bottom: 10px;">Cancel</a> <br>
+                        {{/ifEquals}}
                         <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
                     </td>
  

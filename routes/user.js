@@ -69,17 +69,14 @@ router.get('/logout',(req,res)=>{
   req.session.userLoggedIn=false
   res.redirect('/')
 })
-router.get('/profile',verifyLogin,(req,res)=>{
-  res.render('user/profile',{user:req.session.user})
-})
-router.get('/edit-profile',verifyLogin,async(req,res)=>{
+router.get('/profile',verifyLogin,async(req,res)=>{
   let userDetails=await userHelpers.getUserDetails(req.session.user._id)
-  res.render('user/edit-profile',{userDetails,user:req.session.user})
+  res.render('user/profile',{userDetails,user:req.session.user})
 })
-router.post('/edit-profile/:id',(req,res)=>{
+router.post('/profile/:id',(req,res)=>{
   console.log(req.params.id,req.body);
   userHelpers.editProfile(req.params.id,req.body).then((response)=>{
-    res.redirect('/')
+    res.redirect('/profile')
   })
 })
 router.get('/cart',verifyLogin,async(req,res)=>{
@@ -95,10 +92,10 @@ router.get('/add-to-cart/:id',verifyLogin,(req,res)=>{
     res.json({status:true})
   })
 })
-router.post('/change-product-quantity',verifyLogin,(req,res,next)=>{
+router.post('/change-product-quantity',(req,res,next)=>{
   userHelpers.changeProductQuantity(req.body).then(async(response)=>{ 
-    response.total = await userHelpers.getTotalAmount(req.body.user) 
-    res.json(response)
+      response.total = await userHelpers.getTotalAmount(req.body.user)
+      res.json(response)
   })
 })
 router.post('/remove-cart',verifyLogin,(req,res)=>{
@@ -130,6 +127,11 @@ router.get('/order-success',verifyLogin,(req,res)=>{
 router.get('/orders',verifyLogin,async(req,res)=>{
   let orders = await userHelpers.getUserOrders(req.session.user._id)
   res.render('user/orders',{user:req.session.user,orders})
+})
+router.get('/cancelled-status/:id',verifyLogin,(req,res)=>{
+  userHelpers.changeCancelledStatus(req.params.id).then((response)=>{
+    res.redirect('/orders')
+  })
 })
 router.get('/view-order-products/:id',verifyLogin,async(req,res)=>{
   let products = await userHelpers.getOrderProducts(req.params.id)
