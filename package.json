@@ -6,6 +6,8 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
+    "aos": "^2.3.4",
     "bcrypt": "^5.0.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
