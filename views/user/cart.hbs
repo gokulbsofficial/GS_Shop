@@ -1,84 +1,176 @@
-<section class="cart">
-    <div class="container">
-        <h2>Cart</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Item</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Option</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each products}}
-                <tr>      
-                    <td><img style="width: 70px;height:70px" src="/product-images/{{this.product._id}}.jpeg" alt=""></td>
-                    <td>{{this.product.Name}}</td>
-                    <td>Rs.{{this.product.Price}}</td>
-                    <td>
-                        <button class="cart-item-count mr-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
-                        <span id="{{this.product._id}}">{{this.quantity}}</span>
-                        <button class="cart-item-count ml-3" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
-                    </td>
-                    <td>
-                        <button class="remove-cart btn btn-danger" onclick="removeCart('{{this._id}}','{{this.product._id}}','{{../user._id}}','{{this.product.Name}}')">Remove</button>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        <hr style="background-color: #fff;">
-        <div class="float-right pr-5">
-        <h3 class="float-left mr-5">Total: Rs.<span id="total">{{totalValue}}</span>.00</h3><br>
-        {{#ifGreater totalValue 0}}
-        <a href="/place-order" class="btn btn-success mt-3" style="width: 100%;"><b>Place Order</b></a>
-        {{/ifGreater}}
+<section>
+    <div class="page__title-area">
+        <div class="container">
+            <div class="page__title-container">
+                <ul class="page__titles">
+                    <li>
+                        <a href="/">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-home"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="page__title">Cart</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
 
-<script>
-    function changeQuantity(cartId,proId,userId,count){
-        let quantity = parseInt(document.getElementById(proId).innerHTML)
-        count = parseInt(count)
-        $.ajax({
-            url:'/change-product-quantity',
-            data:{
-                user:userId,
-                cart:cartId,
-                product:proId,
-                count:count,
-                quantity:quantity
-            },
-            method:'post',
-            success:(response)=>{
-                if(response.removeProduct){
-                alert("Product Removed from cart")
-                location.reload()
-                }else{
-                    document.getElementById(proId).innerHTML=quantity+count
-                    document.getElementById('total').innerHTML=response.total
-                }
-            }
-        })
-    }
-    function removeCart(cartId,proId,userId,name){
-      let check = confirm("Are you sure to remove "+name+" from cart ?")
-      if(check==true){
-        $.ajax({
-            url:'/remove-cart',
-            data:{
-                user:userId,
-                cart:cartId,
-                product:proId,
-            },
-            method:'post',
-            success:(response)=>{
-                location.reload()
-            }
-        })
-      }
-    }
-</script>
+<main id="main">
+    <section class="section cart__area">
+        <div class="container">
+            <div class="responsive__cart-area">
+                <form class="cart__form">
+                    <div class="cart__table table-responsive">
+                        <table width="100%" class="table">
+                            <thead>
+                                <tr>
+                                    <th>PRODUCT</th>
+                                    <th>NAME</th>
+                                    <th>UNIT PRICE</th>
+                                    <th>QUANTITY</th>
+                                    <th>TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Cart Loops -->
+                                {{#each products}}
+                                <tr>
+                                    <td class="product__thumbnail">
+                                        <a href="/view-product/{{this.product._id}}">
+                                            <img src="/product-images/{{this.product._id}}.jpeg" alt="">
+                                        </a>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.product.Name}}</a>
+                                        <br><br>
+                                        <small>White/6.25</small>
+                                    </td>
+                                    <td class="product__price">
+                                        <div class="price">
+                                            <span class="new__price">₹{{this.product.Price}}.00</span>
+                                        </div>
+                                    </td>
+                                    <td class="product__quantity">
+                                        <div class="input-counter">
+                                            <div>
+                                                <span class="minus-btn"
+                                                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">
+                                                    <svg>
+                                                        <use xlink:href="./images/sprite.svg#icon-minus"></use>
+                                                    </svg>
+                                                </span>
+                                                <span class="counter-btn"
+                                                    id="{{this.product._id}}">{{this.quantity}}</span>
+                                                <span class="plus-btn"
+                                                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">
+                                                    <svg>
+                                                        <use xlink:href="./images/sprite.svg#icon-plus"></use>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="product__subtotal">
+                                        <div class="price">
+                                            <span class="new__price">₹{{this.product.Price}}</span>
+                                        </div>
+                                        <a href="#" class="remove__cart-item"
+                                            onclick="removeCart('{{this._id}}','{{this.product._id}}','{{../user._id}}','{{this.product.Name}}')">
+                                            <svg>
+                                                <use xlink:href="./images/sprite.svg#icon-trash"></use>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                <!-- /Cart Loops -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="cart-btns">
+                        <div class="continue__shopping">
+                            <a href="/">Continue Shopping</a>
+                        </div>
+                        {{!-- <div class="check__shipping">
+                            <input type="checkbox">
+                            <span>Shipping(+7$)</span>
+                        </div> --}}
+                    </div>
+
+                    <div class="cart__totals">
+                        <h3>Cart Totals</h3>
+                        <ul>
+                            <li>
+                                Subtotal
+                                <span class="new__price" id="subTotal">₹{{totalValue}}</span>
+                            </li>
+                            <li>
+                                Shipping
+                                <span class="new__price">₹0</span>
+                            </li>
+                            <li>
+                                Total
+                                <span class="new__price" id="total">₹{{totalValue}}</span>
+                            </li>
+                        </ul>
+                        <a href="/place-order">PROCEED TO CHECKOUT</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facility Section -->
+    <section class="facility__section section" id="facility">
+        <div class="container">
+            <div class="facility__contianer">
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="./images/sprite.svg#icon-airplane"></use>
+                        </svg>
+                    </div>
+                    <p>FREE SHIPPING WORLD WIDE</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="./images/sprite.svg#icon-credit-card-alt"></use>
+                        </svg>
+                    </div>
+                    <p>100% MONEY BACK GUARANTEE</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="./images/sprite.svg#icon-credit-card"></use>
+                        </svg>
+                    </div>
+                    <p>MANY PAYMENT GATWAYS</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="./images/sprite.svg#icon-headphones"></use>
+                        </svg>
+                    </div>
+                    <p>24/7 ONLINE SUPPORT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Go To -->
+
+<a href="#header" class="goto-top scroll-link">
+    <svg>
+        <use xlink:href="./images/sprite.svg#icon-arrow-up"></use>
+    </svg>
+</a>

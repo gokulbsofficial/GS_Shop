@@ -15,7 +15,76 @@
                     </div>
                 </div>
             </div>
-            {{/each}}
+            <section>
+                <div class="page__title-area">
+                    <div class="container">
+                        <div class="page__title-container">
+                            <ul class="page__titles">
+                                <li>
+                                    <a href="/">
+                                        <svg>
+                                            <use xlink:href="/images/sprite.svg#icon-home"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="page__title">Order Products</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section latest__products">
+                <div class="container">
+                    <div>
+                        <h1 class="primary__title" style="visibility: hidden;">Order Products</h1>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <!-- Latest Product Loops -->
+                    {{#each products}}
+                    <li class="glide__slide" style="list-style: none;">
+                        <div class="product">
+                            <div class="product__header">
+                                <a href="/view-product/{{this._id}}"><img
+                                        src="/product-images/{{this.product._id}}.jpeg" alt="product"></a>
+                            </div>
+                            <div class="product__footer">
+                                <h3>{{this.product.Name}}</h3>
+                                <div class="rating">
+                                    <svg>
+                                        <use xlink:href="/images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="/images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="/images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="/images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="/images/sprite.svg#icon-star-empty"></use>
+                                    </svg>
+                                </div>
+                                <div class="product__price">
+                                    <h4>₹{{this.product.Price}}.00</h4>
+                                </div>
+                                <div class="product__price">
+                                    <h4>Quantity : {{this.quantity}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                    <!-- /Latest Products Loops-->
+                    </ul>
+                </div>
         </div>
     </div>
+</section>
+{{/each}}
+</div>
+</div>
 </section>

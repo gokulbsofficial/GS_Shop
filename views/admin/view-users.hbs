@@ -7,7 +7,7 @@
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col"></th>
+                    <th scope="col">Option</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,11 +17,12 @@
                     <td>{{this.Name}}</td>
                     <td>{{this.Email}}</td>
                     <td>
-                        <a href="/admin/remove-user/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you want to remove {{this.Name}} ?')" >Remove</a>
+                        <a href="/admin/remove-user/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you want to remove {{this.Name}} ?')">Remove</a>
                     </td>
                 </tr>
                 {{/each}}
-            
+
             </tbody>
         </table>
     </div>

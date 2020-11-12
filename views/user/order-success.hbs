@@ -1,12 +1,35 @@
 <section>
     <div class="row">
-    <div class="container">
-        <div class="col-md-12 text-center mt-5">
-            <div>
-            <img class="text-center" src="/images/success.png" alt="missing">
+        <div class="container">
+            <div class="text-center cart__totals">
+                <div>
+                    <img src="/images/success.png" alt="missing">
+                </div>
+                <a href="/orders">Go to Order</a>
             </div>
-            <a href="/orders" class="btn btn-primary mt-4">Go to Order</a>
         </div>
     </div>
-    </div>
 </section>
+<style>
+    img {
+        margin-left: 64px;
+        margin-bottom: 80px;
+        margin-top: 10px;
+    }
+
+    .cart__totals {
+        margin-bottom: 100px;
+    }
+
+    @media only screen and (max-width: 567px) {
+        img {
+            margin-left: 5px;
+            margin-bottom: 80px;
+            margin-top: 40px;
+        }
+
+        .cart__totals {
+            margin-bottom: 100px;
+        }
+    }
+</style>

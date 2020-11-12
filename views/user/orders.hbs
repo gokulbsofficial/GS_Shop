@@ -1,41 +1,138 @@
-<section class="view-Prod">
-    <div class="container">
-        <div class="row mt-4">
-        <table class="table mt-5" id="table1">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Address</th>
-                    <th>Pincode</th>
-                    <th>Mobile</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Payment</th>
-                    <th>Status</th>
-                    <th scope="col-12">Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each orders}}
-                <tr>
-                    <td>{{this.date}}</td>
-                    <td>{{this.deliveryDetails.address}}</td>
-                    <td>{{this.deliveryDetails.pincode}}</td>
-                    <td>{{this.deliveryDetails.mobile}}</td>
-                    <td>{{this.totalAmount}}</td>
-                    <td>{{this.paymentMethod}}</td>
-                    <td>{{this.status}}</td>
-                    <td>
-                        {{#ifEquals this.status "pending"}}
-                        <a href="/payment-continue/{{this._id}}" class="btn btn-success" style="margin-right: 5px;margin-bottom: 10px;">Continue</a><a href="/cancelled-status/{{this._id}}" class="btn btn-danger" style="margin-bottom: 10px;">Cancel</a> <br>
-                        {{/ifEquals}}
-                        <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
-                    </td>
- 
-                </tr>
-                {{/each}}
-            
-            </tbody>
-        </table>
+<section>
+    <div class="page__title-area">
+        <div class="container">
+            <div class="page__title-container">
+                <ul class="page__titles">
+                    <li>
+                        <a href="/">
+                            <svg>
+                                <use xlink:href="/images/sprite.svg#icon-home"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="page__title">Orders</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
+<main id="main">
+    <section class="section cart__area">
+        <div class="container">
+            <div class="responsive__cart-area">
+                <form class="cart__form">
+                    <div class="cart__table table-responsive">
+                        <table width="100%" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Address</th>
+                                    <th>Pincode</th>
+                                    <th>Mobile</th>
+                                    <th>Amount</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Order Loops -->
+                                {{#each orders}}
+                                <tr>
+                                    <td class="product__name">
+                                        <a>{{this.date}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.deliveryDetails.address}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.deliveryDetails.pincode}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.deliveryDetails.mobile}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__price">
+                                        <div class="price">
+                                            <span class="new__price">₹{{this.totalAmount}}.00</span>
+                                        </div>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.paymentMethod}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__name">
+                                        <a>{{this.status}}</a>
+                                        <br><br>
+                                    </td>
+                                    <td class="product__quantity">
+                                        {{#ifEquals this.status "Pending"}}
+                                        <a href="/payment-continue/{{this._id}}" class="btn btn-success"
+                                            style="margin-right: 5px;margin-bottom: 10px;">Continue</a><a
+                                            href="/cancelled-status/{{this._id}}" class="btn btn-danger"
+                                            style="margin-bottom: 10px;">Cancel</a> <br>
+                                        {{/ifEquals}}
+                                        <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View
+                                            Products</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                <!-- /Order Loops -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="cart-btns">
+                        <div class="continue__shopping">
+                            <a href="/">Continue Shopping</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Facility Section -->
+    <section class="facility__section section" id="facility">
+        <div class="container">
+            <div class="facility__contianer" data-aos="fade-up" data-aos-duration="1200">
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="/images/sprite.svg#icon-airplane"></use>
+                        </svg>
+                    </div>
+                    <p>FREE SHIPPING WORLD WIDE</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="/images/sprite.svg#icon-credit-card-alt"></use>
+                        </svg>
+                    </div>
+                    <p>100% MONEY BACK GUARANTEE</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="/images/sprite.svg#icon-credit-card"></use>
+                        </svg>
+                    </div>
+                    <p>MANY PAYMENT GATWAYS</p>
+                </div>
+
+                <div class="facility__box">
+                    <div class="facility-img__container">
+                        <svg>
+                            <use xlink:href="/images/sprite.svg#icon-headphones"></use>
+                        </svg>
+                    </div>
+                    <p>24/7 ONLINE SUPPORT</p>
+                </div>
+            </div>
+        </div>
+    </section>
