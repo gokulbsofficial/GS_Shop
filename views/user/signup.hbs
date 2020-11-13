@@ -1,26 +1,29 @@
-<div class="row">
-    <div class="col-md-6 m-auto">
-        <div class="container mt-5 pl-5">
-            <h2 class="text-center">Create new account</h2>
+<section class="login">
+    <div class="box " style="height: 475px;">
+        <div class="form">
+            <h2>Signup</h2>
+            <form action="/signup" method="POST">
+                {{#if signupErr}}
+                <p class="error">{{signupErr}}</p>
+                {{/if}}
+                <div class="inputBx">
+                    <input type="text" name="Name" placeholder="Name">
+                    <img src="/images/user.png" alt="icon failed">
+                </div>
+                <div class="inputBx">
+                    <input type="text" name="Email" placeholder="Email">
+                    <img src="/images/user.png" alt="icon failed">
+                </div>
+                <div class="inputBx">
+                    <input type="password" name="Password" placeholder="Password">
+                    <img src="/images/lock.png" alt="icon failed">
+                </div>
+                <label class="remember"><input type="checkbox"> Remember Me</label>
+                <div class="inputBx">
+                    <input type="submit" value="Signup">
+                </div>
+            </form>
+            <p>Already have a <a href="/login">Account</a></p>
         </div>
-        {{#if signupErr}}
-        <p class="error">{{signupErr}}</p>
-        {{/if}}
-        <form action="/signup" method="POST">
-            <div class="form-group">
-                <label for="">Name</label>
-                <input type="text" class="form-control" name="Name" placeholder="Enter Name">
-            </div>
-            <div class="form-group">
-                <label for="">Email address</label>
-                <input type="email" class="form-control" name="Email" placeholder="Enter Email">
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" name="Password" placeholder="Password">
-            </div>
-            <a class="signup-create" href="/login">Already have account ?</a>
-            <button type="submit" class="btn btn-primary float-right">Signup</button>
-        </form>
     </div>
-</div>
+</section>

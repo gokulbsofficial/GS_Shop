@@ -1,35 +1,51 @@
 <section class="edit-prod">
-    <div class="container"> 
-            <div class="row">
+    <div class="container">
+        <div class="row">
 
-                <div class="col-md-6" style="margin-left: 23%;">
-                    <h2 class="text-center">Edit Product</h2>
-                    <form action="/admin/edit-product/{{product._id}}" method="POST" enctype="multipart/form-data">
-                        <label for="">Name:</label>
-                        <input type="text" name="Name" class="form-control" value="{{product.Name}}">
+            <div class="col-md-6" style="margin-left: 23%;">
+                <h2 class="text-center">Edit Product</h2>
+                <form action="/admin/edit-product/{{product._id}}" method="POST" enctype="multipart/form-data">
+                    <label for="">Name:</label>
+                    <input type="text" name="Name" class="form-control" value="{{product.Name}}">
 
-                        <label for="">Category:</label>
-                        <input type="text" name="Category" class="form-control" value="{{product.Category}}">
+                    <label for="">Category:</label>
+                    <input type="text" name="Category" class="form-control" value="{{product.Category}}">
 
-                        <label for="">Price:</label>
-                        <input type="text" name="Price" class="form-control" value="{{product.Price}}">
+                    <label for="">Color:</label>
+                    <input type="text" name="Color" class="form-control" value="{{product.Color}}">
 
-                        <label for="">Description:</label>
-                        <input type="text" name="Description" class="form-control" value="{{product.Description}}">
+                    <label for="">Brand:</label>
+                    <input type="text" name="Brand" class="form-control" value="{{product.Brand}}">
 
-                        <label for="">Image:</label>
-                        <img src="/product-images/{{product._id}}.jpeg" alt="image missing" id="imgView" class="p-2">
-                        <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+                    <label for="">Product Type:</label>
+                    <input type="text" name="Product-type" class="form-control" value="{{product.Product-type}}">
+
+                    <label for="">Screen size:</label>
+                    <input type="text" name="Screen-size" class="form-control" value="{{product.Screen-size}}">
+
+                    <label for="">Price:</label>
+                    <input type="text" name="Price" class="form-control" value="{{product.Price}}">
+
+                    <label for="">Description:</label>
+                    <input type="text" name="Description" class="form-control" value="{{product.Description}}">
+
+                    <label for="">Availability:</label>
+                    <input type="message" name="Availability" class="form-control" value="{{product.Availability}}">
 
 
-                        <button type="submit" class="btn btn-success mt-4">Submit</button>
-                    </form>
-                </div>
+                    <label for="">Image:</label>
+                    <img src="/product-images/{{product._id}}.jpeg" alt="image missing" id="imgView" class="p-2">
+                    <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+
+
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
             </div>
+        </div>
     </div>
 </section>
 <script>
-    function viewImage(event){
-        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    function viewImage(event) {
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
     }
 </script>

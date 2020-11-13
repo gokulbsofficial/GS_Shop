@@ -1,47 +1,77 @@
-<header class="user-header">
-    <nav class="navbar navbar-expand-lg ">
-        <a class="navbar-brand" href="/">Shopping Cart</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Products<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">Cart <span class="badge badge-success"
-                            id="cart-count">{{cartCount}}</span></a>
-                </li>
-                {{#if user}}
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="/orders">Orders</a>
-                </li>
-                {{/if}}
-            </ul>
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{#if user}}
-                    {{user.Name}}
-                    {{else}}
-                    Account
-                    {{/if}}
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {{#if user}}
-                    <a class="dropdown-item" href="/profile">Profile</a>
-                    {{/if}}
-                    
-                    {{#if user}}
-                    <a class="dropdown-item" href="/logout">Logout</a>
-                    {{else}}
-                    <a class="dropdown-item" href="/login">Login</a>
-                    {{/if}}
+<!-- Header -->
+<header id="header" class="header">
+    <div class="navigation">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav__hamburger">
+                    <svg>
+                        <use xlink:href="/images/sprite.svg#icon-menu"></use>
+                    </svg>
                 </div>
-            </div>
+
+                <div class="nav__logo">
+                    <a href="/" class="scroll-link">
+                        Shopping
+                    </a>
+                </div>
+
+                <div class="nav__menu">
+                    <div class="menu__top">
+                        <span class="nav__category">Shopping</span>
+                        <a href="#" class="close__toggle">
+                            <svg>
+                                <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="/" class="nav__link scroll-link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#category" class="nav__link scroll-link">Category</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="/orders" class="nav__link scroll-link">Orders</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#news" class="nav__link scroll-link">News</a>
+                        </li>
+                        {{#if user}}
+                        <li class="nav__item">
+                            <a href="/logout" class="nav__link scroll-link">Logout</a>
+                        </li>
+                        {{else}}
+                        <li class="nav__item">
+                            <a href="/login" class="nav__link scroll-link">Login</a>
+                        </li>
+                        {{/if}}
+                    </ul>
+                </div>
+                <div class="nav__icons">
+                    <a href="/profile" class="icon__item">
+                        <svg class="icon__user">
+                            <use xlink:href="/images/sprite.svg#icon-user"></use>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="icon__item">
+                        <svg class="icon__search">
+                            <use xlink:href="/images/sprite.svg#icon-search"></use>
+                        </svg>
+                    </a>
+
+                    <a href="/cart" class="icon__item">
+                        <svg class="icon__cart">
+                            <use xlink:href="/images/sprite.svg#icon-shopping-basket"></use>
+                        </svg>
+                        {{#if user}}
+                        <span id="cart__total" class="cart-count">{{cartCount}}</span>
+                        {{/if}}
+                    </a>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </div>
 </header>
+<!-- End Header -->

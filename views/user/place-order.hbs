@@ -1,38 +1,41 @@
 <section>
-    <div class="container mt-5">
+    <div class="container">
         <form action="" id="checkout-form">
             <div class="row">
 
-                <div class="col-md-6">
-                    <h2>Enter Delivery Details</h2><br>
+                <h1 style="text-align: center;">Enter Delivery Details</h1><br>
+                <div class="Details">
                     <div>
-                        <label for="">Address</label>
+                        <label for="">Address:</label>
 
-                        <input class="form-control" type="text" name="address" id="address" placeholder="Address">
-                        <label for="Pincode">Pincode</label>
+                        <input class="form-control" type="text" name="address" id="address" placeholder="Address"><br>
+                        <label for="Pincode">Pincode:</label>
 
-                        <input class="form-control" type="text" name="pincode" id="pincode" placeholder="Pincode">
-                        <label for="">Mobile</label>
+                        <input class="form-control" type="text" name="pincode" id="pincode" placeholder="Pincode"><br>
+                        <label for="">Mobile:</label>
 
-                        <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Mobile">
+                        <input class="form-control" type="text" name="mobile" id="mobile" placeholder="Mobile"><br>
                         <input type="text" name="userId" id="" value="{{user._id}}" hidden>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="container mt-5 ml-5 checkout">
-                        <h5>Total: Rs.{{total}}</h5>
-                        <hr>
-                        <div class="payment">
-                            <p>Payment Method</p>
-                            <label class="radio-inline">
+                <div class="cart__totals checkout" style="margin-bottom:80px;margin-top:50px;">
+                    <h3>Payment Method</h3>
+                    <ul>
+                        <li>
+                            Total:
+                            <span class="new__price" id="total">₹{{total}}.00</span>
+                        </li>
+                        <li>
+                            Option:
+                            <label class="radio-inline" style="padding-bottom: 7px;padding-top: 13px;">
                                 <input type="radio" name="payment-method" value="COD" checked>COD
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="payment-method" value="ONLINE">Online payment
                             </label>
-                            <button class="btn btn-primary float-left" type="submit">Checkout</button>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+                    <button type="submit">Checkout</button>
                 </div>
             </div>
         </form>
@@ -69,7 +72,7 @@
             "prefill": {
                 "name": "Gokul Sreejith",
                 "email": "Sreejith@Hacker.com",
-             "contact": "1234567890"
+                "contact": "1234567890"
             },
             "notes": {
                 "address": "Razorpay Corporate Office"
@@ -87,8 +90,8 @@
             alert(response.error.reason);
             alert(response.error.metadata);
         });
-        
-            rzp1.open();
+
+        rzp1.open();
 
     }
     function verifyPayment(payment, order) {
@@ -99,10 +102,10 @@
                 order
             },
             method: 'post',
-            success:(response)=>{
-                if(response.status){
+            success: (response) => {
+                if (response.status) {
                     location.href = '/order-success'
-                }else{
+                } else {
                     alert("payment failed")
                 }
             }
@@ -115,18 +118,65 @@
         height: 20px;
     }
 
+    .form-control {
+        width: 66%;
+        margin-left: 194px;
+    }
+
     label.radio-inline {
         display: flex;
         align-items: center;
     }
 
-    .checkout {
-        border: 1px solid;
-        border-radius: 3px;
-        padding: 30px;
+    .payment {
+        padding-bottom: 14px;
     }
 
-    .payment {
-        padding-bottom: 16px;
+    section {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: larger;
+        margin-left: 193px;
+        padding-bottom: 20px;
+    }
+
+    input {
+        margin-bottom: 12px;
+        margin-top: 10px;
+    }
+
+    button {
+        font-size: 1.5rem;
+        padding: 1.2rem 3rem;
+        background-color: var(--white);
+        color: var(--black);
+        text-transform: uppercase;
+        border: 1px solid var(--black);
+        transition: all 0.4s ease-in-out;
+    }
+
+    button:hover {
+        background-color: var(--black);
+        color: var(--white);
+        border: 1px solid var(--black);
+    }
+
+    h1 {
+        margin-bottom: 15px;
+    }
+
+    @media only screen and (max-width: 567px) {
+        label {
+            font-size: larger;
+            margin-left: 10%;
+            padding-bottom: 20px;
+        }
+
+        .form-control {
+            width: 77%;
+            margin-left: 32px;
+        }
     }
 </style>

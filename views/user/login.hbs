@@ -1,22 +1,26 @@
-<div class="login">
-    <div class="col-md-6 m-auto">
-        <div class="container mt-5 pl-5 ">
-            <h2 class="text-center">Login</h2>
+<section class="login">
+    <div class="box">
+        <div class="form">
+            <h2>Login</h2>
             <form action="/login" method="POST">
-            {{#if loginErr}}
+                {{#if loginErr}}
                 <p class="error">{{loginErr}}</p>
-            {{/if}}
-                <div class="form-group">
-                    <label for="">Email Address</label>
-                    <input type="email" class="form-control" name="Email" placeholder="Email">
+                {{/if}}
+                <div class="inputBx">
+                    <input type="text" name="Email" placeholder="Email">
+                    <img src="/images/user.png" alt="icon failed">
                 </div>
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" class="form-control" name="Password" placeholder="Password">
+                <div class="inputBx">
+                    <input type="password" name="Password" placeholder="Password">
+                    <img src="/images/lock.png" alt="icon failed">
                 </div>
-                <a class="login-create" href="/signup">Create new Account ?</a>
-                <button type="submit" class="btn btn-primary float-right">Login</button>
+                <label class="remember"><input type="checkbox"> Remember Me</label>
+                <div class="inputBx">
+                    <input type="submit" value="Login">
+                </div>
             </form>
+            <p>Forget <a href="#">Password</a></p>
+            <p>Need an <a href="/signup">Account</a></p>
         </div>
     </div>
-</div>
+</section>
