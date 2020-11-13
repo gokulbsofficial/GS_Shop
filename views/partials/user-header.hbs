@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="nav__logo">
-                    <a href="/" class="scroll-link">
+                    <a href="/" class="nav__logo">
                         Shopping
                     </a>
                 </div>
@@ -20,30 +20,30 @@
                         <span class="nav__category">Shopping</span>
                         <a href="#" class="close__toggle">
                             <svg>
-                                <use xlink:href="./images/sprite.svg#icon-cross"></use>
+                                <use xlink:href="/images/sprite.svg#icon-cross"></use>
                             </svg>
                         </a>
                     </div>
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="/" class="nav__link scroll-link">Home</a>
+                            <a href="/" class="nav__link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#category" class="nav__link scroll-link">Category</a>
+                            <a href="#category" class="nav__link">Category</a>
                         </li>
                         <li class="nav__item">
-                            <a href="/orders" class="nav__link scroll-link">Orders</a>
+                            <a href="/orders" class="nav__link">Orders</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#news" class="nav__link scroll-link">News</a>
+                            <a href="#news" class="nav__link">News</a>
                         </li>
                         {{#if user}}
                         <li class="nav__item">
-                            <a href="/logout" class="nav__link scroll-link">Logout</a>
+                            <a href="/logout" class="nav__link">Logout</a>
                         </li>
                         {{else}}
                         <li class="nav__item">
-                            <a href="/login" class="nav__link scroll-link">Login</a>
+                            <a href="/login" class="nav__link">Login</a>
                         </li>
                         {{/if}}
                     </ul>
