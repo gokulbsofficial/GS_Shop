@@ -9,7 +9,6 @@ const slider2 = document.getElementById("glide_2");
 const slider3 = document.getElementById("glide_3");
 const slider4 = document.getElementById("glide_4");
 
-
 /*
 =============
 Hero
@@ -97,6 +96,5 @@ if (slider4) {
     },
   }).mount();
 }
-
 
 AOS.init();

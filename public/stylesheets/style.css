@@ -399,3 +399,21 @@
 .login .bx .form a {
   color: #fff;
 }
+
+.page-not-found {
+  margin-top: 150px;
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.page-not-found img {
+  height: 300px;
+}
+.page-not-found h1 {
+  font-weight: bold;
+  font-size: 45px;
+  font-family: "Comfortaa", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

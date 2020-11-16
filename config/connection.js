@@ -1,18 +1,17 @@
-const mongoClient = require('mongodb').MongoClient
+const mongoClient = require("mongodb").MongoClient;
+require("dotenv").config();
 const state = {
-    db: null
-}
+    db: null,
+};
 module.exports.connect = (done) => {
-
-    const url = 'mongodb+srv://gokul-sreejith:5006769+@cluster0.whi1v.gcp.mongodb.net/Shopping?retryWrites=true&w=majority';
-    const dbname = 'Shopping'
+    const url = process.dotenv.DB_URL;
+    const dbname = process.dotenv.DB_NAME;
     mongoClient.connect(url, { useUnifiedTopology: true }, (err, data) => {
-        if (err) return done(err)
-        state.db = data.db(dbname)
-        done()
-    })
-
-}
+        if (err) return done(err);
+        state.db = data.db(dbname);
+        done();
+    });
+};
 module.exports.get = () => {
-    return state.db
-}
+    return state.db;
+};

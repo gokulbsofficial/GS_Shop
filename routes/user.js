@@ -145,7 +145,7 @@ router.get("/add-to-cart/:id", (req, res) => {
         res.json({ status: true });
       });
   } else {
-    res.json({status: false})
+    res.json({ status: false });
   }
 });
 router.post("/change-product-quantity", verifyLogin, (req, res, next) => {

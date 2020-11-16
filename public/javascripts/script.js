@@ -9,7 +9,7 @@ function addToCart(proId) {
         $(".cart-count").html(count);
         alert("Added to cart");
       } else {
-          window.location = "/login"
+        window.location = "/login";
       }
     },
   });
@@ -20,18 +20,18 @@ function changeQuantity(cartId, proId, userId, count) {
   if (quantity === 1 && count === -1) {
     var con = confirm("Do Yo want delete this product");
     if (con) {
-        $.ajax({
-            url: "/remove-cart",
-            data: {
-              user: userId,
-              cart: cartId,
-              product: proId,
-            },
-            method: "post",
-            success: (response) => {
-              location.reload();
-            },
-          });
+      $.ajax({
+        url: "/remove-cart",
+        data: {
+          user: userId,
+          cart: cartId,
+          product: proId,
+        },
+        method: "post",
+        success: (response) => {
+          location.reload();
+        },
+      });
     }
   } else {
     $.ajax({
