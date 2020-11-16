@@ -1,7 +1,4 @@
-const { response } = require('express');
 var express = require('express');
-const { request } = require('http');
-const { render } = require('../app');
 const adminHelpers = require('../helpers/admin-helpers');
 var router = express.Router();
 const verifyLogin = ((req, res, next) => {
