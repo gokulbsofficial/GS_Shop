@@ -1,0 +1,22 @@
+<div class="star-rating">
+                                                <input id="{{this._id}}5" type="radio" name="rating" value="5" />
+                                                <label for="{{this._id}}5" title="5 stars">
+                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                </label>
+                                                <input id="{{this._id}}4" type="radio" name="rating" value="4" />
+                                                <label for="{{this._id}}4" title="4 stars">
+                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                </label>
+                                                <input id="{{this._id}}3" type="radio" name="rating" value="3" />
+                                                <label for="{{this._id}}3" title="3 stars">
+                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                </label>
+                                                <input id="{{this._id}}2" type="radio" name="rating" value="2" />
+                                                <label for="{{this._id}}2" title="2 stars">
+                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                </label>
+                                                <input id="{{this._id}}1" type="radio" name="rating" value="1" />
+                                                <label for="{{this._id}}1" title="1 stars">
+                                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                                                </label>
+                                            </div>
