@@ -6,35 +6,35 @@
                 <h2 class="text-center">Add Product</h2>
                 <form action="/admin/add-product" method="POST" enctype="multipart/form-data">
                     <label for="">Name:</label>
-                    <input type="text" name="Name" class="form-control">
+                    <input type="text" name="Name" required class="form-control">
 
                     <label for="">Category:</label>
-                    <input type="text" name="Category" class="form-control">
+                    <input type="text" name="Category" required class="form-control">
 
                     <label for="">Color:</label>
-                    <input type="text" name="Color" class="form-control">
+                    <input type="text" name="Color" required class="form-control">
 
                     <label for="">Brand:</label>
-                    <input type="text" name="Brand" class="form-control">
+                    <input type="text" name="Brand" required class="form-control">
 
                     <label for="">Product Type:</label>
-                    <input type="text" name="Product-type" class="form-control">
+                    <input type="text" name="Product-type" required class="form-control">
 
                     <label for="">Screen size:</label>
                     <input type="text" name="Screen-size" class="form-control">
 
                     <label for="">Price:</label>
-                    <input type="text" name="Price" class="form-control">
+                    <input type="text" name="Price" required class="form-control">
 
                     <label for="">Description:</label>
-                    <input type="message" name="Description" class="form-control">
+                    <input type="message" name="Description" required class="form-control">
 
                     <label for="">Availability:</label>
-                    <input type="message" name="Availability" class="form-control">
+                    <input type="message" name="Availability" required class="form-control">
 
                     <label for="">Image:</label>
                     <img src="/product-images/{{product._id}}.jpeg" id="imgView" class="p-2">
-                    <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+                    <input type="file" name="Image" required class="form-control" onchange="viewImage(event)">
 
 
                     <button type="submit" class="btn btn-success mt-4">Submit</button>

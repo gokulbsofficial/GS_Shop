@@ -1,3 +1,16 @@
+const viewImage = (event, image) => {
+  if (image === "image1") {
+    var prodimage = document.getElementById("prodimage1");
+    prodimage.src = URL.createObjectURL(event.target.files[0]);
+  } else if (image === "image2") {
+    var prodimage = document.getElementById("prodimage2");
+    prodimage.src = URL.createObjectURL(event.target.files[0]);
+  } else {
+    var prodimage = document.getElementById("prodimage3");
+    prodimage.src = URL.createObjectURL(event.target.files[0]);
+  }
+};
+
 function addToCart(proId) {
   $.ajax({
     url: "/add-to-cart/" + proId,
@@ -73,4 +86,75 @@ function removeCart(cartId, proId, userId, name) {
       },
     });
   }
+}
+$("#checkout-form").submit((e) => {
+  e.preventDefault()
+  $.ajax({
+      url: '/place-order',
+      method: 'post',
+      data: $('#checkout-form').serialize(),
+      success: (response) => {
+          if (response.CODSuccess) {
+              location.href = '/order-success'
+          } else {
+              razorpayPayment(response)
+          }
+      }
+  })
+})
+function razorpayPayment(order) {
+  var options = {
+      "key": "rzp_test_WbBi7ofMaJMjnb", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "GS Shopping Cart",
+      "description": "Transfer Your Money Securly",
+      "image": "/images/favicon.ico",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+          verifyPayment(response, order)
+      },
+      "prefill": {
+          "name": "",
+          "email": "",
+          "contact": ""
+      },
+      "notes": {
+          "address": "Razorpay Corporate Office"
+      },
+      "theme": {
+          "color": "#8622DB"
+      }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.on('payment.failed', function (response) {
+      alert(
+          response.error.reason +
+          " on " +
+          response.error.step +
+          " Payment ID = " +
+          response.error.metadata.payment_id +
+          " Order ID = " +
+          response.error.metadata.order_id
+      );
+      window.location = "/orders";
+  });
+  rzp1.open();
+}
+function verifyPayment(payment, order) {
+  $.ajax({
+      url: '/verify-payment',
+      data: {
+          payment,
+          order
+      },
+      method: 'post',
+      success: (response) => {
+          if (response.status) {
+              location.href = '/order-success'
+          } else {
+              alert("payment failed")
+          }
+      }
+  })
 }
