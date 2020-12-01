@@ -189,7 +189,7 @@
         </section>
 
         <!-- Category Center -->
-        <section class="category__section section" id="category">
+        <div class="category__section section" id="category">
             <div class="tab__list">
                 <div class="title__container tabs">
                     <div class=PHONE"section__titles category__titles ">
@@ -219,8 +219,10 @@
                     </div>
                 </div>
             </div>
-            <div class="category__container" data-aos="fade-up" data-aos-duration="1200">
-                <div class="category__center" id="products">
+        </div>
+        <div class="category__container" data-aos="fade-up" data-aos-duration="1200">
+            <div class="product__content">
+                <div class="category__center content active" id="products">
                     <!-- Products Loop-->
                     {{#each products}}
                     <li class="glide__slide" style="list-style: none;">
@@ -283,6 +285,204 @@
                     <!-- /Products Loop-->
                 </div>
             </div>
+            {{!-- Tab  --}}
+            <div class="product__content">
+                <div class="category__center content" id="trendingProds">
+                    <!-- Products Loop-->
+                    {{#each trendingProds}}
+                    <li class="glide__slide" style="list-style: none;">
+                        <div class="product">
+                            <div class="product__header">
+                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                        alt="product"></a>
+                            </div>
+                            <div class="product__footer">
+                                <h3>{{this.Name}}</h3>
+                                <div class="rating">
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                                    </svg>
+                                </div>
+                                <div class="product__price">
+                                    <h4>₹{{this.Price}}.00</h4>
+                                </div>
+                                <a><button onclick="addToCart('{{this._id}}')" type="submit" class="product__btn">Add To
+                                        Cart</button></a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a data-tip="Quick View" data-place="left" href="/view-product/{{this._id}}">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-eye"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Wishlist" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Compare" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-loop2"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    {{/each}}
+                    <!-- /Products Loop-->
+                </div>
+            </div>
+            {{!-- 3 Tab  --}}
+            <div class="product__content">
+                <div class="category__center content" id="specialProds">
+                    <!-- Products Loop-->
+                    {{#each specialProds}}
+                    <li class="glide__slide" style="list-style: none;">
+                        <div class="product">
+                            <div class="product__header">
+                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                        alt="product"></a>
+                            </div>
+                            <div class="product__footer">
+                                <h3>{{this.Name}}</h3>
+                                <div class="rating">
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                                    </svg>
+                                </div>
+                                <div class="product__price">
+                                    <h4>₹{{this.Price}}.00</h4>
+                                </div>
+                                <a><button onclick="addToCart('{{this._id}}')" type="submit" class="product__btn">Add To
+                                        Cart</button></a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a data-tip="Quick View" data-place="left" href="/view-product/{{this._id}}">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-eye"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Wishlist" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Compare" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-loop2"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    {{/each}}
+                    <!-- /Products Loop-->
+                </div>
+            </div>
+            {{!-- 4rd Tab  --}}
+            <div class="product__content">
+                <div class="category__center content" id="featuredProds">
+                    <!-- Products Loop-->
+                    {{#each featuredProds}}
+                    <li class="glide__slide" style="list-style: none;">
+                        <div class="product">
+                            <div class="product__header">
+                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                        alt="product"></a>
+                            </div>
+                            <div class="product__footer">
+                                <h3>{{this.Name}}</h3>
+                                <div class="rating">
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-full"></use>
+                                    </svg>
+                                    <svg>
+                                        <use xlink:href="./images/sprite.svg#icon-star-empty"></use>
+                                    </svg>
+                                </div>
+                                <div class="product__price">
+                                    <h4>₹{{this.Price}}.00</h4>
+                                </div>
+                                <a><button onclick="addToCart('{{this._id}}')" type="submit" class="product__btn">Add To
+                                        Cart</button></a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a data-tip="Quick View" data-place="left" href="/view-product/{{this._id}}">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-eye"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Wishlist" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-heart-o"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-tip="Add To Compare" data-place="left" href="#">
+                                        <svg>
+                                            <use xlink:href="./images/sprite.svg#icon-loop2"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    {{/each}}
+                    <!-- /Products Loop-->
+                </div>
+            </div>
+            {{!-- Tab  --}}
+        </div>
+    </div>
     </div>
     </section>
 
@@ -320,7 +520,7 @@
                             </li>
                             {{!-- {{/each}} --}}
                             <!-- /News Loops -->
-                            {{!-- deleted line --}}
+                            {{!-- want to delete below lines --}}
                             <li class="glide__slide">
                                 <div class="new__card">
                                     <div class="card__header">
@@ -381,7 +581,7 @@
                                     </div>
                                 </div>
                             </li>
-                            {{!-- Deleted Lines --}}
+                            {{!-- Delete upto above Lines --}}
                         </ul>
                     </div>
                 </div>
@@ -472,3 +672,4 @@
         <use xlink:href="/images/sprite.svg#icon-arrow-up"></use>
     </svg>
 </a>
+<script src="/javascripts/category-content.js"></script>

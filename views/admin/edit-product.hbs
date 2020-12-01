@@ -6,31 +6,31 @@
                 <h2 class="text-center">Edit Product</h2>
                 <form action="/admin/edit-product/{{product._id}}" method="POST" enctype="multipart/form-data">
                     <label for="">Name:</label>
-                    <input type="text" name="Name" class="form-control" value="{{product.Name}}">
+                    <input type="text" name="Name" class="form-control" required value="{{product.Name}}">
 
                     <label for="">Category:</label>
-                    <input type="text" name="Category" class="form-control" value="{{product.Category}}">
+                    <input type="text" name="Category" class="form-control" required value="{{product.Category}}">
 
                     <label for="">Color:</label>
-                    <input type="text" name="Color" class="form-control" value="{{product.Color}}">
+                    <input type="text" name="Color" class="form-control" required value="{{product.Color}}">
 
                     <label for="">Brand:</label>
-                    <input type="text" name="Brand" class="form-control" value="{{product.Brand}}">
+                    <input type="text" name="Brand" class="form-control" required value="{{product.Brand}}">
 
                     <label for="">Product Type:</label>
-                    <input type="text" name="Product-type" class="form-control" value="{{product.Product-type}}">
+                    <input type="text" name="Product-type" class="form-control" required value="{{product.Product-type}}">
 
                     <label for="">Screen size:</label>
-                    <input type="text" name="Screen-size" class="form-control" value="{{product.Screen-size}}">
+                    <input type="text" name="Screen-size" class="form-control" required value="{{product.Screen-size}}">
 
                     <label for="">Price:</label>
-                    <input type="text" name="Price" class="form-control" value="{{product.Price}}">
+                    <input type="text" name="Price" class="form-control" required value="{{product.Price}}">
 
                     <label for="">Description:</label>
-                    <input type="text" name="Description" class="form-control" value="{{product.Description}}">
+                    <input type="text" name="Description" class="form-control" required value="{{product.Description}}">
 
                     <label for="">Availability:</label>
-                    <input type="message" name="Availability" class="form-control" value="{{product.Availability}}">
+                    <input type="message" name="Availability" class="form-control" required value="{{product.Availability}}">
 
 
                     <label for="">Image:</label>
@@ -44,8 +44,3 @@
         </div>
     </div>
 </section>
-<script>
-    function viewImage(event) {
-        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
-    }
-</script>

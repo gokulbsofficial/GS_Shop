@@ -1020,12 +1020,30 @@ Latest Products Media Query
 Category Center
 ======================
 */
+/* .product__content {
+  
+} */
+
+.product__content .content {
+  position: absolute;
+  transform: translate(0, 25vh);
+  transition: all 0.6s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 555;
+}
+
+.product__content .content.active {
+  position: relative;
+  transform: translate(0, 0vh);
+  opacity: 1;
+  visibility: visible;
+}
 .category__center {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem 2rem;
 }
-
 @media only screen and (max-width: 999px) {
   .category__center {
     grid-template-columns: 1fr 1fr 1fr;

@@ -3,6 +3,7 @@ var db = require("../config/connection");
 const bcrypt = require("bcrypt");
 var collection = require("../config/collections");
 const { response } = require("express");
+const { resolve } = require("path");
 var objectId = require("mongodb").ObjectID;
 module.exports = {
     doAdminLogin: (adminData) => {
@@ -206,6 +207,12 @@ module.exports = {
                 .then((response) => {
                     resolve(response);
                 });
+        });
+    },
+    getAllNews: () => {
+        return new Promise(async (resolve, reject) => {
+            let news = await db.get().collection(News).find().toArray();
+            resolve(news);
         });
     },
 };

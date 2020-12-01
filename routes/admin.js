@@ -84,6 +84,20 @@ router.get("/users", verifyLogin, (req, res) => {
     res.render("admin/view-users", { users, admin: true });
   });
 });
+router.get("/news", verifyLogin, (req, res) => {
+  // adminHelpers.getAllNews().then((news) => {
+    res.render("admin/news", {  admin: true });
+  // });
+});
+router.get("/edit-news", verifyLogin, (req, res) => {
+  // adminHelpers.getAllNews().then((news) => {
+    res.render("admin/edit-news", { admin: true });
+  // });
+});
+router.post("/edit-news", verifyLogin, (req, res) => {
+
+    res.redirect("/admin/news");
+});
 router.get("/orders", verifyLogin, (req, res) => {
   adminHelpers.getAllOrders().then((orders) => {
     res.render("admin/view-orders", { admin: true, orders });
