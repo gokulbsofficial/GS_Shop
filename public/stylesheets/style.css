@@ -145,7 +145,7 @@
 /* view product page */
 
 .view-Prod {
-  background-color: #20b6c6;
+  background-color:#c383ff;
 }
 .view-Prod h2 {
   text-align: center;
@@ -165,7 +165,7 @@
 /* table page */
 
 .table.dataTable tbody tr {
-  background-color: #20b6c6;
+  background-color: #c383ff;
 }
 
 /* cart page */
@@ -250,16 +250,22 @@
 }
 /* view user page */
 
+.view-Users .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.view-Users .card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.view-Users .container {
+  padding: 2px 16px;
+}
 .view-Users {
   background-color: #20b6c6;
   height: 100vh;
-}
-.view-Users h2 {
-  text-align: center;
-  padding: 13px;
-}
-.view-Users .table {
-  margin-top: 10px;
 }
 
 /* login page */

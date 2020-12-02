@@ -85,18 +85,46 @@ router.get("/users", verifyLogin, (req, res) => {
   });
 });
 router.get("/news", verifyLogin, (req, res) => {
-  // adminHelpers.getAllNews().then((news) => {
-    res.render("admin/news", {  admin: true });
-  // });
+  adminHelpers.getAllNews().then((news) => {
+    res.render("admin/news", { news, admin: true });
+  });
 });
-router.get("/edit-news", verifyLogin, (req, res) => {
-  // adminHelpers.getAllNews().then((news) => {
-    res.render("admin/edit-news", { admin: true });
-  // });
+router.get("/add-news", verifyLogin, (req, res) => {
+  adminHelpers.getAllNews().then((news) => {
+    res.render("admin/add-news", { news, admin: true });
+  });
 });
-router.post("/edit-news", verifyLogin, (req, res) => {
-
+router.post("/add-news", verifyLogin, (req, res) => {
+  adminHelpers.addNews(req.body, (id) => {
+    let image = req.files.Image;
+    image.mv("./public/images/" + id + ".jpg", (err) => {
+      if (!err) {
+        res.render("admin/add-news", { admin: true });
+      } else {
+        console.log(err);
+      }
+    });
+  });
+});
+router.get("/edit-news/:id", verifyLogin, async (req, res) => {
+  let news = await adminHelpers.getNews(req.params.id);
+  res.render("admin/edit-news", { news, admin: true });
+});
+router.post("/edit-news/:id", verifyLogin, (req, res) => {
+  let id = req.params.id;
+  adminHelpers.updateNews(req.params.id, req.body).then(() => {
     res.redirect("/admin/news");
+    if (req.files.Image) {
+      let image = req.files.Image;
+      image.mv("./public/images/" + id + ".jpg");
+    }
+  });
+});
+router.get("/delete-news/:id", verifyLogin, (req, res) => {
+  let newsId = req.params.id;
+  adminHelpers.deleteNews(newsId).then((response) => {
+    res.redirect("/admin/news");
+  });
 });
 router.get("/orders", verifyLogin, (req, res) => {
   adminHelpers.getAllOrders().then((orders) => {

@@ -20,6 +20,7 @@ router.get("/", async function (req, res, next) {
   let trendingProds = await userHelpers.getTrendingProducts();
   let featuredProds = await userHelpers.getFeaturedProducts();
   let specialProds = await userHelpers.getSpecialProducts();
+  let news = await userHelpers.getAllNews();
   adminHelpers.getAllProducts().then((products) => {
     res.render("user/home", {
       products,
@@ -27,6 +28,7 @@ router.get("/", async function (req, res, next) {
       featuredProds,
       specialProds,
       user,
+      news,
       cartCount,
       EcommerceDesign: true,
       Guest: true,

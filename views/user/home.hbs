@@ -114,7 +114,7 @@
                                 <div class="product">
                                     <div class="product__header">
                                         <a href="/view-product/{{this._id}}"><img
-                                                src="/product-images/{{this._id}}.jpeg" alt="product"></a>
+                                                src="/images/product-images/{{this._id}}.jpeg" alt="product"></a>
                                     </div>
                                     <div class="product__footer">
                                         <h3>{{this.Name}}</h3>
@@ -228,7 +228,7 @@
                     <li class="glide__slide" style="list-style: none;">
                         <div class="product">
                             <div class="product__header">
-                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                <a href="/view-product/{{this._id}}"><img src="/images/product-images/{{this._id}}.jpeg"
                                         alt="product"></a>
                             </div>
                             <div class="product__footer">
@@ -293,7 +293,7 @@
                     <li class="glide__slide" style="list-style: none;">
                         <div class="product">
                             <div class="product__header">
-                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                <a href="/view-product/{{this._id}}"><img src="/images/product-images/{{this._id}}.jpeg"
                                         alt="product"></a>
                             </div>
                             <div class="product__footer">
@@ -358,7 +358,7 @@
                     <li class="glide__slide" style="list-style: none;">
                         <div class="product">
                             <div class="product__header">
-                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                <a href="/view-product/{{this._id}}"><img src="/images/product-images/{{this._id}}.jpeg"
                                         alt="product"></a>
                             </div>
                             <div class="product__footer">
@@ -423,7 +423,7 @@
                     <li class="glide__slide" style="list-style: none;">
                         <div class="product">
                             <div class="product__header">
-                                <a href="/view-product/{{this._id}}"><img src="/product-images/{{this._id}}.jpeg"
+                                <a href="/view-product/{{this._id}}"><img src="/images/product-images/{{this._id}}.jpeg"
                                         alt="product"></a>
                             </div>
                             <div class="product__footer">
@@ -502,86 +502,22 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <!-- News Loops -->
-                            {{!-- {{#each News}} --}}
+                            {{#each news}}
                             <li class="glide__slide">
                                 <div class="new__card">
                                     <div class="card__header">
-                                        <img src="./images/news1.jpg" alt="">
+                                        <img src="./images/news/{{this._id}}.jpg" alt="Image missing">
                                     </div>
                                     <div class="card__footer">
-                                        <h3>Styling White Shirts After A Cool Day</h3>
+                                        <h3>{{this.Title}}</h3>
                                         <span>By Admin</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                                            praesentium, numquam non
-                                            provident rem sed minus natus unde vel modi!</p>
-                                        <a href="#"><button>Read More</button></a>
+                                        <p>{{this.SubDetails}}</p>
+                                        <a href="{{this.ReadMe}}"><button>Read More</button></a>
                                     </div>
                                 </div>
                             </li>
-                            {{!-- {{/each}} --}}
+                            {{/each}}
                             <!-- /News Loops -->
-                            {{!-- want to delete below lines --}}
-                            <li class="glide__slide">
-                                <div class="new__card">
-                                    <div class="card__header">
-                                        <img src="./images/news2.jpg" alt="">
-                                    </div>
-                                    <div class="card__footer">
-                                        <h3>Styling White Shirts After A Cool Day</h3>
-                                        <span>By Admin</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                                            praesentium, numquam non
-                                            provident rem sed minus natus unde vel modi!</p>
-                                        <a href="#"><button>Read More</button></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="new__card">
-                                    <div class="card__header">
-                                        <img src="./images/news3.jpg" alt="">
-                                    </div>
-                                    <div class="card__footer">
-                                        <h3>Styling White Shirts After A Cool Day</h3>
-                                        <span>By Admin</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                                            praesentium, numquam non
-                                            provident rem sed minus natus unde vel modi!</p>
-                                        <a href="#"><button>Read More</button></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="new__card">
-                                    <div class="card__header">
-                                        <img src="./images/news4.jpg" alt="">
-                                    </div>
-                                    <div class="card__footer">
-                                        <h3>Styling White Shirts After A Cool Day</h3>
-                                        <span>By Admin</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                                            praesentium, numquam non
-                                            provident rem sed minus natus unde vel modi!</p>
-                                        <a href="#"><button>Read More</button></a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="glide__slide">
-                                <div class="new__card">
-                                    <div class="card__header">
-                                        <img src="./images/news5.jpg" alt="">
-                                    </div>
-                                    <div class="card__footer">
-                                        <h3>Styling White Shirts After A Cool Day</h3>
-                                        <span>By Admin</span>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
-                                            praesentium, numquam non
-                                            provident rem sed minus natus unde vel modi!</p>
-                                        <a href="#"><button>Read More</button></a>
-                                    </div>
-                                </div>
-                            </li>
-                            {{!-- Delete upto above Lines --}}
                         </ul>
                     </div>
                 </div>

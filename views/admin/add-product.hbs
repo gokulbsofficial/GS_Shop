@@ -33,7 +33,7 @@
                     <input type="message" name="Availability" required class="form-control">
 
                     <label for="">Image:</label>
-                    <img src="/product-images/{{product._id}}.jpeg" id="imgView" class="p-2">
+                    <img src="/images/product-images/{{product._id}}.jpeg" id="imgView" alt="Upload Image" class="p-2">
                     <input type="file" name="Image" required class="form-control" required onchange="viewImage(event)">
 
 
@@ -43,3 +43,8 @@
         </div>
     </div>
 </section>
+<script>
+    function viewImage(event) {
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

@@ -209,10 +209,64 @@ module.exports = {
                 });
         });
     },
+
+    // News
+
     getAllNews: () => {
         return new Promise(async (resolve, reject) => {
-            let news = await db.get().collection(News).find().toArray();
+            let news = await db
+                .get()
+                .collection(collection.NEWS_COLLECTION)
+                .find()
+                .toArray();
             resolve(news);
         });
     },
+    getNews: (newsId) => {
+        return new Promise((resolve, reject) => {
+            db.get()
+                .collection(collection.NEWS_COLLECTION)
+                .findOne({ _id: objectId(newsId) })
+                .then((news) => {
+                    resolve(news);
+                });
+        });
+    },
+    addNews: (News, callback) => {
+        db.get()
+            .collection(collection.NEWS_COLLECTION)
+            .insertOne(News)
+            .then((data) => {
+                callback(data.ops[0]._id);
+            });
+    },
+    updateNews: (newsId, NewDetails) => {
+        return new Promise((resolve, reject) => {
+            db.get()
+                .collection(collection.NEWS_COLLECTION)
+                .updateOne(
+                    { _id: objectId(newsId) },
+                    {
+                        $set: {
+                            Title: NewDetails.Title,
+                            SubDetails: NewDetails.SubDetails,
+                            ReadMe: NewDetails.ReadMe,
+                        },
+                    }
+                )
+                .then((response) => {
+                    resolve();
+                });
+        });
+    },
+    deleteNews:(newsId)=>{
+        return new Promise((resolve, reject) => {
+            db.get()
+                .collection(collection.NEWS_COLLECTION)
+                .removeOne({ _id: objectId(newsId) })
+                .then((response) => {
+                    resolve(response);
+                });
+        });
+    }
 };

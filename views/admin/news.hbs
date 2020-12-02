@@ -1,1 +1,28 @@
-<h1>News</h1>
+<section style="background-color: #c383ff;">
+    <div class="container">
+        {{#ifGreater 6 news.length}}
+        <div class="text-right pt-4" style="margin-right: 54px;">
+            <a href="/admin/add-news" class="btn btn-success">Add News</a>
+        </div>
+        {{/ifGreater}}
+        <div class="row">
+            {{#each news}}
+            <div class="col-md-4">
+                <div class="card mt-4" style="width: 18rem;">
+                    <img class="card-img-top" src="/images/news/{{this._id}}.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.Title}}</h5>
+                        <p class="card-text">{{this.SubDetails}}</p>
+                        <a href="{{this.ReadMe}}" class="btn btn-primary">Read More</a>
+                        <a href="/admin/edit-news/{{this._id}}" class="btn btn-primary">Edit News</a>
+                        <div class="delete text-center">
+                            <a href="/admin/delete-news/{{this._id}}" class="btn btn-danger mt-3"
+                                onclick="return confirm('Are you sure ?')">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>

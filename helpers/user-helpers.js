@@ -103,6 +103,16 @@ module.exports = {
             resolve(trendingProds);
         });
     },
+    getAllNews:()=>{
+        return new Promise(async (resolve, reject) => {
+            let news = await db
+                .get()
+                .collection(collection.NEWS_COLLECTION)
+                .find()
+                .toArray();
+            resolve(news);
+        });
+    },
     getProductView: (proId) => {
         return new Promise((resolve, reject) => {
             db.get()

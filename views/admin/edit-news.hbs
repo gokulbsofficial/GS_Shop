@@ -1,1 +1,33 @@
-<h1>Edit News</h1>
+<section class="edit-prod" style="height: 100vh;">
+    <div class="container" id="contain-addPro">
+        <div class="row">
+
+            <div class="col-md-6" style="margin-left: 23%;">
+                <h2 class="text-center">Edit News</h2>
+                <form action="/admin/edit-news/{{news._id}}" method="POST" enctype="multipart/form-data">
+                    <label for="">Title:</label>
+                    <input type="text" name="Title" value="{{news.Title}}" required class="form-control">
+
+                    <label for="">Details</label>
+                    <input type="text" name="SubDetails" value="{{news.SubDetails}}" required class="form-control">
+
+                    <label for="">ReadMe Link:</label>
+                    <input type="text" name="ReadMe" required value="{{news.ReadMe}}" class="form-control">
+
+                    <label for="">Image:</label>
+                    <img src="/images/news/{{news._id}}.jpg" style="width: 240px;" id="imgView" alt="Upload Image"
+                        class="p-2">
+                    <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
+
+
+                    <button type="submit" class="btn btn-success mt-4">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function viewImage(event) {
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

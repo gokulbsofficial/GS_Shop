@@ -34,7 +34,7 @@
 
 
                     <label for="">Image:</label>
-                    <img src="/product-images/{{product._id}}.jpeg" alt="image missing" id="imgView" class="p-2">
+                    <img src="/images/product-images/{{product._id}}.jpeg" alt="image missing" id="imgView" class="p-2">
                     <input type="file" name="Image" class="form-control" onchange="viewImage(event)">
 
 
@@ -44,3 +44,8 @@
         </div>
     </div>
 </section>
+<script>
+    function viewImage(event) {
+        document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>
